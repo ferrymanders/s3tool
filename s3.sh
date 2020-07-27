@@ -30,8 +30,11 @@ function putS3
     -H "Content-Type: ${contentType}" \
     -H "Authorization: AWS ${s3Key}:${signature}" \
     "https://${bucket}.${s3Host}/${file}"
-
+  
   echo "# File saved, to retrieve run : ./s3.sh get ${file} ${bucket} \"${contentType}\" <location_to_save_to>"
+  echo "# If you need this tool on a other machine use :" 
+  echo "# - wget https://raw.githubusercontent.com/ferrymanders/s3tool/master/s3.sh; chmod +x s3.sh"
+  echo "# - curl https://raw.githubusercontent.com/ferrymanders/s3tool/master/s3.sh -o s3.sh; chmod +x s3.sh"
 }
 
 function getS3
