@@ -24,7 +24,7 @@ function putS3
   dateValue=$(date -R)
   stringToSign="PUT\n\n${contentType}\n${dateValue}\n${resource}"
   signature=$(echo -en ${stringToSign} | openssl sha1 -hmac ${s3Secret} -binary | base64)
-  curl -X PUT -T "${file}" \
+  curl -X PUT -T "${path}/${file}" \
     -H "Host: ${bucket}.${s3Host}" \
     -H "Date: ${dateValue}" \
     -H "Content-Type: ${contentType}" \
